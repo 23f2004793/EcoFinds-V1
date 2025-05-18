@@ -1,11 +1,20 @@
-
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import logo from "./LOGO-.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Search, ShoppingCart, Menu, User, LogOut, Home, Package, Heart } from "lucide-react";
+import {
+  Search,
+  ShoppingCart,
+  Menu,
+  User,
+  LogOut,
+  Home,
+  Package,
+  Heart,
+} from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 
@@ -19,7 +28,7 @@ export const Header = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     setSearchTerm(searchQuery);
-    
+
     // If not already on the home page, navigate there
     if (location.pathname !== "/") {
       navigate("/");
@@ -32,7 +41,11 @@ export const Header = () => {
     <header className="sticky top-0 z-30 w-full bg-white shadow-sm animate-fade-in">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          <img
+            src={logo}
+            alt="EcoFinds Logo"
+            className="h-10 w-auto object-contain"
+          />
           <Link to="/" className="flex items-center">
             <span className="text-2xl font-bold bg-eco-gradient bg-clip-text text-transparent">
               Eco<span className="text-eco-brown-500">Finds</span>
@@ -40,10 +53,7 @@ export const Header = () => {
           </Link>
 
           {/* Search - Hide on mobile */}
-          <form 
-            className="hidden md:flex flex-1 mx-8" 
-            onSubmit={handleSearch}
-          >
+          <form className="hidden md:flex flex-1 mx-8" onSubmit={handleSearch}>
             <div className="relative w-full max-w-lg">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
@@ -68,7 +78,7 @@ export const Header = () => {
                 )}
               </Button>
             </Link>
-            
+
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
                 <Link to="/dashboard">
@@ -79,11 +89,7 @@ export const Header = () => {
                     </AvatarFallback>
                   </Avatar>
                 </Link>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  onClick={() => logout()}
-                >
+                <Button variant="ghost" size="sm" onClick={() => logout()}>
                   <LogOut className="h-4 w-4 mr-2" />
                   Log out
                 </Button>
@@ -120,7 +126,7 @@ export const Header = () => {
                 )}
               </Button>
             </Link>
-            
+
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -144,31 +150,31 @@ export const Header = () => {
                   </form>
 
                   <nav className="flex flex-col space-y-1">
-                    <Link 
+                    <Link
                       to="/"
                       className="flex items-center py-2 px-3 rounded-md hover:bg-eco-green-50"
                     >
                       <Home className="h-4 w-4 mr-2" />
                       Home
                     </Link>
-                    
+
                     {isAuthenticated && (
                       <>
-                        <Link 
+                        <Link
                           to="/dashboard"
                           className="flex items-center py-2 px-3 rounded-md hover:bg-eco-green-50"
                         >
                           <User className="h-4 w-4 mr-2" />
                           Profile
                         </Link>
-                        <Link 
+                        <Link
                           to="/my-listings"
                           className="flex items-center py-2 px-3 rounded-md hover:bg-eco-green-50"
                         >
                           <Package className="h-4 w-4 mr-2" />
                           My Listings
                         </Link>
-                        <Link 
+                        <Link
                           to="/purchases"
                           className="flex items-center py-2 px-3 rounded-md hover:bg-eco-green-50"
                         >
@@ -178,7 +184,7 @@ export const Header = () => {
                       </>
                     )}
                   </nav>
-                  
+
                   <Separator className="my-4" />
 
                   <div className="mt-auto">
@@ -188,12 +194,15 @@ export const Header = () => {
                           <Avatar className="h-8 w-8 mr-2">
                             <AvatarImage src={currentUser?.avatar} />
                             <AvatarFallback className="bg-eco-green-100 text-eco-green-800">
-                              {currentUser?.username.charAt(0).toUpperCase() || "U"}
+                              {currentUser?.username.charAt(0).toUpperCase() ||
+                                "U"}
                             </AvatarFallback>
                           </Avatar>
-                          <span className="font-medium">{currentUser?.username}</span>
+                          <span className="font-medium">
+                            {currentUser?.username}
+                          </span>
                         </div>
-                        <Button 
+                        <Button
                           className="w-full"
                           variant="outline"
                           onClick={() => {
