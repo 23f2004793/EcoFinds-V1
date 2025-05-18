@@ -1,0 +1,90 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 84 30% 98%;
+    --foreground: 142 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 142 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 25% 10%;
+
+    --primary: 142 56% 40%;
+    --primary-foreground: 355 100% 100%;
+
+    --secondary: 36 40% 80%;
+    --secondary-foreground: 36 40% 20%;
+
+    --muted: 84 20% 90%;
+    --muted-foreground: 142 10% 40%;
+
+    --accent: 36 40% 90%;
+    --accent-foreground: 142 25% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 142 10% 85%;
+    --input: 142 10% 85%;
+    --ring: 142 56% 40%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-md hover:-translate-y-1;
+  }
+
+  .eco-button {
+    @apply bg-eco-gradient text-white rounded-lg px-4 py-2 font-medium transition-all
+           hover:opacity-90 focus:ring-2 focus:ring-eco-green-300 focus:ring-offset-1 shadow-sm;
+  }
+
+  .earth-button {
+    @apply bg-earth-gradient text-white rounded-lg px-4 py-2 font-medium transition-all
+           hover:opacity-90 focus:ring-2 focus:ring-eco-brown-300 focus:ring-offset-1 shadow-sm;
+  }
+}
